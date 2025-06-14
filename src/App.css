@@ -1,0 +1,13 @@
+header{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  height:60px;
+  border-bottom: 1px solid blueviolet;
+}
+
+header ul{
+  list-style: none;
+  display:flex;
+  gap:1rem;
+}
