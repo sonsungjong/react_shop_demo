@@ -1,0 +1,127 @@
+/* 장바구니 테이블 전체 컨테이너 스타일 */
+.Cart_table_container {
+    width: 100%;
+    max-width: 1200px; /* 테이블의 최대 너비 지정 */
+    margin: 40px auto; /* 중앙 정렬 및 상하 여백 */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 효과 */
+    border-radius: 8px; /* 둥근 모서리 */
+    background-color: #fff; /* 흰색 배경 */
+}
+
+/* 테이블 기본 스타일 */
+.Cart_container table {
+    width: 100%; /* 부모 컨테이너에 꽉 차게 */
+    border-collapse: collapse; /* 셀 경계선 병합 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+/* 테이블 헤더 (thead) 스타일 */
+.Cart_container thead th {
+    background-color: #f8f8f8; /* 헤더 배경색 */
+    padding: 15px 10px;
+    border-bottom: 2px solid #eee; /* 하단 경계선 */
+    font-weight: bold;
+    color: #333;
+}
+
+/* 테이블 바디 (tbody) 행 스타일 */
+.Cart_container .Cart_item {
+    border-bottom: 1px solid #eee; /* 각 행의 하단 경계선 */
+    height: 136.5px;
+}
+
+.Cart_container .Cart_item:last-child {
+    border-bottom: none; /* 마지막 행은 경계선 없음 */
+}
+
+/* 테이블 셀 (td) 기본 스타일 */
+.Cart_container td {
+    padding: 15px 10px;
+    vertical-align: middle; /* 세로 중앙 정렬 */
+    color: #555;
+}
+
+/* 제품 이미지 스타일 */
+.Cart_container .Cart_item img {
+    width: 100px; /* 이미지 너비 100px */
+    height: 100px; /* 이미지 높이 100px */
+    object-fit: contain; /* 이미지 비율 유지하며 컨테이너에 맞춤 */
+    border: 1px solid #ddd; /* 이미지 테두리 */
+    border-radius: 4px; /* 이미지 모서리 둥글게 */
+}
+
+/* 수량 조절 버튼 및 텍스트 스타일 */
+.Cart_container .Cart_item td:nth-child(4) { /* '수량' 컬럼에 해당하는 td */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 중앙 정렬 */
+    gap: 5px; /* 버튼과 숫자 사이 간격 */
+    height:136.5px;
+}
+
+.Cart_container .Cart_item button {
+    background-color: #007bff; /* 파란색 버튼 */
+    color: white;
+    border: none;
+    border-radius: 50%; /* 동그란 버튼 */
+    width: 30px;
+    height: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Cart_container .Cart_item button:hover {
+    background-color: #0056b3; /* 호버 시 더 진한 파란색 */
+}
+
+.Cart_container .Cart_item span {
+    font-weight: bold;
+    font-size: 1.1em;
+    min-width: 30px; /* 수량이 한자리/두자리일 때 너비 고정 */
+}
+
+/* 가격 및 총금액 텍스트 스타일 */
+.Cart_container .Cart_item td:nth-child(5), /* 가격 컬럼 */
+.Cart_container.Cart_item td:nth-child(6) { /* 총금액 컬럼 */
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+/* 테이블 푸터 (tfoot) 스타일 */
+.Cart_container tfoot tr {
+    background-color: #f8f8f8; /* 푸터 배경색 */
+    border-top: 2px solid #eee; /* 상단 경계선 */
+    font-weight: bold;
+}
+
+.Cart_container tfoot td {
+    padding: 20px 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.Cart_container tfoot td:last-child {
+    text-align: right; /* 결제하기 버튼 오른쪽 정렬 */
+}
+
+/* 결제하기 버튼 스타일 */
+.Cart_container tfoot button {
+    background-color: #28a745; /* 녹색 버튼 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.Cart_container tfoot button:hover {
+    background-color: #218838; /* 호버 시 더 진한 녹색 */
+}
