@@ -7,6 +7,8 @@ import Home from './pages/Home/Home'
 export default function App() {
   // 이미지를 받아와서 state에 저장
   const [products, setProducts] = useState([]);
+  // 로딩상태를 체크하는 state를 하나 만든다
+  const [loading, setLoading] = useState(true);
 
   // App 컴포넌트 시작되면 사이트에서 이미지 받아올거니깐
   // useEffect
@@ -33,11 +35,25 @@ export default function App() {
     .catch((err)=>{
       alert(err);
     })
+    .finally(()=>{
+      // then과 catch가 모두 끝나면 마무리할 작업을 여기에
+      // 여기서 setLoading으로 false를 만들어준다
+      setLoading(false);
+    })
   }, []);
+
+  if(loading === true){
+    return(
+      <div className='App_loading'>
+        <h1>Now Loading...</h1>
+        <p>잠시만 기다려주세요</p>
+      </div>
+    )
+  }
 
   return (
     <BrowserRouter>
-      <header>
+      <header className='nav'>
         <div><h2><Link to='/'>MyShopping</Link></h2></div>
         <ul>
           <li><Link to='/'>홈페이지</Link></li>

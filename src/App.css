@@ -1,4 +1,4 @@
-header{
+header.nav{
   display:flex;
   justify-content: space-around;
   align-items: center;
@@ -6,8 +6,17 @@ header{
   border-bottom: 1px solid blueviolet;
 }
 
-header ul{
+header.nav ul{
   list-style: none;
   display:flex;
   gap:1rem;
+}
+
+.App_loading{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width:100vw;
+  min-height:100vh;
 }
