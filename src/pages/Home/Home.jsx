@@ -18,27 +18,27 @@ export default function Home(props){
         autoplaySpeed: 4000,
     };
 
-function hSaveCart(event, product) {
-    // 이벤트 버블링 방지
-    event.stopPropagation();
-    // 기존에 있는 my_shop_cart 로컬스토리지를 가져오고 (없으면 빈배열)
-    // && : 앞에꺼가 틀리면 어차피 틀려서 뒤에꺼 무시
-    // || : 앞에꺼 맞으면 어차피 맞아서 뒤에꺼 무시
-    const cart = JSON.parse(localStorage.getItem('my_shop_cart')) || [];
+    function hSaveCart(event, product) {
+        // 이벤트 버블링 방지
+        event.stopPropagation();
+        // 기존에 있는 my_shop_cart 로컬스토리지를 가져오고 (없으면 빈배열)
+        // && : 앞에꺼가 틀리면 어차피 틀려서 뒤에꺼 무시
+        // || : 앞에꺼 맞으면 어차피 맞아서 뒤에꺼 무시
+        const cart = JSON.parse(localStorage.getItem('my_shop_cart')) || [];
 
-    const existingProductIndex = cart.findIndex(item => item.id === product.id);
+        const existingProductIndex = cart.findIndex(item => item.id === product.id);
 
-    if (existingProductIndex > -1) {
-        cart[existingProductIndex].qty += 1;
-    } else {
-        cart.push({ ...product, qty: 1 });
+        if (existingProductIndex > -1) {
+            cart[existingProductIndex].qty += 1;
+        } else {
+            cart.push({ ...product, qty: 1 });
+        }
+
+        localStorage.setItem('my_shop_cart', JSON.stringify(cart));
+
+        console.log('장바구니 업데이트됨:', cart);
+        alert(`${product.title}이 장바구니에 추가되었습니다!`); 
     }
-
-    localStorage.setItem('my_shop_cart', JSON.stringify(cart));
-
-    console.log('장바구니 업데이트됨:', cart);
-    alert(`${product.title}이 장바구니에 추가되었습니다!`); 
-}
 
     return(
         <div className='Home_container'>
