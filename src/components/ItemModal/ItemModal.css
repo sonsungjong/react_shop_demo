@@ -1,0 +1,97 @@
+/* 모달 바깥 부분 */
+.modal_background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    z-index: 1000; 
+}
+
+/* 모달 안쪽 부분 (content container) 스타일 */
+.item_detail_modal {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* max-width는 유지하되, width를 auto로 설정하여 내용에 따라 늘어나도록 합니다. */
+    max-width: 600px;
+    width: auto; /* ⭐ 내용물에 따라 너비가 늘어나도록 설정 */
+    min-width: 300px; /* ⭐ 최소 너비 설정 (너무 작아지는 것 방지) */
+    max-height: 80vh;
+    overflow-y: auto;
+    outline: none;
+
+    /* 모달 내용 자체를 flex 컨테이너로 만들어 내부 요소 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 자식 요소들을 가로로 중앙 정렬 */
+    text-align: center; /* 텍스트도 중앙 정렬 */
+}
+
+/* 모달 내부 콘텐츠를 감싸는 div (JSX의 .item_detail_modal_content) */
+.item_detail_modal_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 콘텐츠를 세로로 쌓고 중앙 정렬 */
+    width: 100%; /* 부모 모달의 너비를 따르도록 */
+}
+
+/* 이미지 스타일 */
+.item_detail_modal_content img {
+    width: 200px; /* ⭐ 이미지 너비 200px */
+    height: 200px; /* ⭐ 이미지 높이 200px */
+    object-fit: contain; /* 비율 유지하며 컨테이너에 맞춤 */
+    margin-bottom: 20px; /* 이미지 아래 여백 */
+    border: 1px solid #eee; /* 테두리 추가 */
+    border-radius: 4px; /* 살짝 둥근 모서리 */
+}
+
+/* 제목 (h3) 스타일 */
+.item_detail_modal_content h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* 설명 (p) 스타일 */
+.item_detail_modal_content p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left; /* 설명은 왼쪽 정렬이 더 가독성이 좋습니다. */
+    max-width: 500px; /* 설명 텍스트의 최대 너비 */
+}
+
+/* 가격 (b) 스타일 */
+.item_detail_modal_content b {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007bff; /* 가격에 강조 색상 */
+    margin-bottom: 25px; /* 버튼 위 여백 */
+}
+
+/* 장바구니 추가 버튼 스타일 */
+.item_detail_modal_content button {
+    background-color: #28a745; /* 녹색 버튼 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* 아이콘과 텍스트(추가 시) 사이 간격 */
+    transition: background-color 0.2s ease;
+}
+
+.item_detail_modal_content button:hover {
+    background-color: #218838; /* 호버 시 더 어두운 녹색 */
+}

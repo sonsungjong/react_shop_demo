@@ -3,6 +3,10 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import './Home.css';
 import { FaCartPlus } from "react-icons/fa";
+import { useState } from 'react';
+import ItemModal from '../../components/ItemModal/ItemModal.jsx';
+
+// npm install react-modal <ReactModal></ReactModal>
 
 export default function Home(props){
     // props.products 배열
@@ -40,6 +44,23 @@ export default function Home(props){
         alert(`${product.title}이 장바구니에 추가되었습니다!`); 
     }
 
+    const [openModal, setOpenModal] = useState(false);
+    const [modalItem, setModalItem] = useState(null);
+
+    function openDetailModal(item){
+        // 아이템 내용을 state에 저장하고
+        // 모달창체크를 true로 만든다
+        setModalItem(item);
+        setOpenModal(true);
+    }
+
+    function closeDetailModal(){
+        // 모달창체크를 false로 만들고
+        // 아이템 내용을 null로 비워준다
+        setOpenModal(false);
+        setModalItem(null);
+    }
+
     return(
         <div className='Home_container'>
             {/* props.products 배열을 react-slick으로 카로셀 */}
@@ -66,7 +87,7 @@ export default function Home(props){
                     // map 배열반복문을 통해서
                     props.products?.map((item, index)=>{
                         return(
-                            <div key={item.id} className='Home_items'>
+                            <div key={item.id} className='Home_items' onClick={()=>{openDetailModal(item)}}>
                                 <img src={item.image} alt={item.title}/>
                                 <b>{item.title}</b>
                                 <p>{`${item.price * 1300} 원`}</p>
@@ -76,6 +97,23 @@ export default function Home(props){
                     })
                 }
             </div>
+
+            {/* 
+                클릭한 상품의 디테일 내역을 모달창을 통해 보여준다
+                모달창이 열려있을때만 보여줄 컴포넌트 <ReactModal></ReactModal>
+                이미지, title, description, price*1300, 장바구니추가버튼
+            */}
+
+            { 
+                openModal && (
+                    <ItemModal closeDetailModal={closeDetailModal}
+                                openModal={openModal}
+                                modalItem={modalItem}
+                                hSaveCart={hSaveCart}
+                    ></ItemModal>
+                )
+            }
+            
         </div>
     )
 }
